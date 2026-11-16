@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STS Gen2 Harness</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="frame">
+  <header class="ctxbar">
+    <div class="mode" role="group" aria-label="Environment">
+      <button id="mode-mock" class="seg" aria-pressed="true">Mock</button>
+      <button id="mode-live" class="seg" aria-pressed="false">Live</button>
+    </div>
+    <span id="live-flag" class="live-flag" hidden>LIVE: real checks (test/UAT)</span>
+    <nav class="crumbs" id="crumbs" aria-label="Context"></nav>
+    <div class="spacer"></div>
+    <span id="token" class="token">Not logged in</span>
+    <button id="reauth" class="btn small">Re-auth</button>
+    <button id="theme" class="btn small" aria-label="Toggle theme">Theme</button>
+  </header>
+
+  <aside class="steps" aria-label="Steps"><ol id="steps"></ol></aside>
+
+  <main class="panes">
+    <section class="pane req" aria-label="Request">
+      <div class="pane-head">
+        <span class="method" id="req-method">GET</span>
+        <code class="path" id="req-path"></code>
+        <div class="spacer"></div>
+        <button id="send" class="btn primary">Send</button>
+      </div>
+      <div id="calls" class="calls"></div>
+      <div class="tabs" role="tablist">
+        <button class="tab" data-tab="builder" aria-selected="true">Builder</button>
+        <button class="tab" data-tab="raw">Raw JSON</button>
+        <button class="tab" data-tab="headers">Headers</button>
+      </div>
+      <div id="viewing" class="banner info" hidden></div>
+      <div class="tabpanel" data-panel="builder" id="builder"></div>
+      <div class="tabpanel" data-panel="raw" hidden>
+        <div id="raw-status" class="hint"></div>
+        <textarea id="raw" class="code" spellcheck="false" aria-label="Request body JSON"></textarea>
+      </div>
+      <div class="tabpanel" data-panel="headers" hidden>
+        <div class="hint">One per line, <code>Name: value</code>. The harness server adds <code>Authorization</code>; it never reaches this page.</div>
+        <textarea id="hdrs" class="code" spellcheck="false" aria-label="Request headers"></textarea>
+      </div>
+      <div class="pane-foot">
+        <button id="curl" class="btn small">Copy as curl</button>
+        <button id="reset" class="btn small">Reset step</button>
+      </div>
+    </section>
+
+    <section class="pane res" aria-label="Response">
+      <div class="pane-head">
+        <span id="res-badges" class="badges"><span class="muted">No response yet</span></span>
+        <div class="spacer"></div>
+        <button id="copy-res" class="btn small">Copy</button>
+      </div>
+      <div id="res-banner"></div>
+      <div id="summary" class="summary" hidden></div>
+      <div class="tabs" role="tablist">
+        <button class="tab" data-rtab="body" aria-selected="true">Body</button>
+        <button class="tab" data-rtab="rheaders">Headers</button>
+        <button class="tab" data-rtab="diff">Diff prev</button>
+      </div>
+      <pre id="res-body" class="code out" data-rpanel="body">Send a request to see the response here.</pre>
+      <pre id="res-headers" class="code out" data-rpanel="rheaders" hidden></pre>
+      <pre id="res-diff" class="code out" data-rpanel="diff" hidden></pre>
+      <div id="next" class="next"></div>
+    </section>
+  </main>
+
+  <footer class="history">
+    <div class="history-head"><strong>History</strong><span class="muted" id="hist-count"></span><div class="spacer"></div><button id="hist-clear" class="btn small">Clear</button></div>
+    <ol id="history"></ol>
+  </footer>
+</div>
+
+<div id="modal" class="modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <h2 id="modal-title"></h2>
+    <p id="modal-body"></p>
+    <div class="modal-actions"><button id="modal-cancel" class="btn">Cancel</button><button id="modal-ok" class="btn danger">Confirm</button></div>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" hidden></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

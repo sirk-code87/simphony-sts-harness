@@ -1,0 +1,145 @@
+{
+  "_comment": "Hand-written mock data. Field names follow the STS Gen2 docs where they were readable; see README 'Schema assumptions' for the guessed ones. Onion Rings (202) is unavailable on purpose, to exercise the 400 menu_item_not_available path.",
+  "org": "demo",
+  "locations": [
+    { "locRef": "1001", "name": "Leith Shore" },
+    { "locRef": "1002", "name": "Stockbridge" }
+  ],
+  "revenueCenters": {
+    "1001": [ { "rvcRef": 1, "name": "Bar" }, { "rvcRef": 2, "name": "Restaurant" } ],
+    "1002": [ { "rvcRef": 1, "name": "Counter" } ]
+  },
+  "menuSummaries": [
+    { "menuId": "10", "name": "All Day", "description": "Burgers, sides and drinks" }
+  ],
+  "menu": {
+    "menuId": "10",
+    "name": "All Day",
+    "familyGroups": [
+      { "familyGroupItemId": 1, "name": { "en-GB": "Burgers" } },
+      { "familyGroupItemId": 2, "name": { "en-GB": "Sides" } },
+      { "familyGroupItemId": 3, "name": { "en-GB": "Drinks" } },
+      { "familyGroupItemId": 4, "name": { "en-GB": "Meals" } }
+    ],
+    "menuItems": [
+      {
+        "menuItemId": 101, "name": { "en-GB": "Classic Burger" }, "familyGroupRef": 1,
+        "definitions": [
+          { "number": 1, "name": { "en-GB": "Classic Burger" },
+            "prices": [ { "priceSequence": 1, "price": 9.5, "level": 1 } ],
+            "condimentGroupRules": [
+              { "condimentGroupRef": 1, "minimumCount": 1, "maximumCount": 1 },
+              { "condimentGroupRef": 2, "minimumCount": 0, "maximumCount": 3 }
+            ] }
+        ]
+      },
+      {
+        "menuItemId": 102, "name": { "en-GB": "Veggie Burger" }, "familyGroupRef": 1,
+        "definitions": [
+          { "number": 1, "name": { "en-GB": "Veggie Burger" },
+            "prices": [ { "priceSequence": 1, "price": 8.95, "level": 1 } ],
+            "condimentGroupRules": [ { "condimentGroupRef": 2, "minimumCount": 0, "maximumCount": 3 } ] }
+        ]
+      },
+      {
+        "menuItemId": 201, "name": { "en-GB": "Fries" }, "familyGroupRef": 2,
+        "definitions": [
+          { "number": 1, "name": { "en-GB": "Fries Regular" },
+            "prices": [ { "priceSequence": 1, "price": 3.5, "level": 1 } ],
+            "condimentGroupRules": [ { "condimentGroupRef": 3, "minimumCount": 0, "maximumCount": 1 } ] },
+          { "number": 2, "name": { "en-GB": "Fries Large" },
+            "prices": [ { "priceSequence": 1, "price": 4.25, "level": 1 } ],
+            "condimentGroupRules": [ { "condimentGroupRef": 3, "minimumCount": 0, "maximumCount": 2 } ] }
+        ]
+      },
+      {
+        "menuItemId": 202, "name": { "en-GB": "Onion Rings" }, "familyGroupRef": 2, "mockUnavailable": true,
+        "definitions": [
+          { "number": 1, "name": { "en-GB": "Onion Rings" },
+            "prices": [ { "priceSequence": 1, "price": 3.95, "level": 1 } ] }
+        ]
+      },
+      {
+        "menuItemId": 301, "name": { "en-GB": "Cola" }, "familyGroupRef": 3,
+        "definitions": [
+          { "number": 1, "name": { "en-GB": "Cola Regular" }, "prices": [ { "priceSequence": 1, "price": 2.8, "level": 1 } ] },
+          { "number": 2, "name": { "en-GB": "Cola Large" }, "prices": [ { "priceSequence": 1, "price": 3.4, "level": 1 } ] }
+        ]
+      },
+      {
+        "menuItemId": 302, "name": { "en-GB": "Lager Pint" }, "familyGroupRef": 3,
+        "definitions": [
+          { "number": 1, "name": { "en-GB": "Lager Pint" }, "prices": [ { "priceSequence": 1, "price": 5.6, "level": 1 } ],
+            "options": [ "containsAlcohol" ] }
+        ]
+      },
+      {
+        "menuItemId": 401, "name": { "en-GB": "Burger Meal" }, "familyGroupRef": 4,
+        "definitions": [
+          { "number": 1, "name": { "en-GB": "Burger Meal" }, "prices": [ { "priceSequence": 1, "price": 0, "level": 1 } ] }
+        ]
+      }
+    ],
+    "condimentGroups": [
+      { "condimentGroupId": 1, "name": { "en-GB": "Cooking" }, "condimentItemRefs": [ 501, 502, 503 ] },
+      { "condimentGroupId": 2, "name": { "en-GB": "Toppings" }, "condimentItemRefs": [ 511, 512, 513, 514 ] },
+      { "condimentGroupId": 3, "name": { "en-GB": "Sauce" }, "condimentItemRefs": [ 521, 522, 523 ] }
+    ],
+    "condimentItems": [
+      { "condimentId": 501, "familyGroupRef": 1, "name": { "en-GB": "Rare" }, "definitions": [ { "number": 1, "name2": { "en-GB": "Rare" }, "prices": [ { "priceSequence": 1, "price": 0, "level": 1 } ] } ] },
+      { "condimentId": 502, "familyGroupRef": 1, "name": { "en-GB": "Medium" }, "definitions": [ { "number": 1, "name2": { "en-GB": "Medium" }, "prices": [ { "priceSequence": 1, "price": 0, "level": 1 } ] } ] },
+      { "condimentId": 503, "familyGroupRef": 1, "name": { "en-GB": "Well Done" }, "definitions": [ { "number": 1, "name2": { "en-GB": "Well Done" }, "prices": [ { "priceSequence": 1, "price": 0, "level": 1 } ] } ] },
+      { "condimentId": 511, "familyGroupRef": 1, "name": { "en-GB": "Cheese" }, "definitions": [ { "number": 1, "name2": { "en-GB": "Cheese" }, "prices": [ { "priceSequence": 1, "price": 1.0, "level": 1 } ], "options": [ "allowCondimentPrefix" ] } ] },
+      { "condimentId": 512, "familyGroupRef": 1, "name": { "en-GB": "Bacon" }, "definitions": [ { "number": 1, "name2": { "en-GB": "Bacon" }, "prices": [ { "priceSequence": 1, "price": 1.5, "level": 1 } ], "options": [ "allowCondimentPrefix" ] } ] },
+      { "condimentId": 513, "familyGroupRef": 1, "name": { "en-GB": "Onions" }, "definitions": [ { "number": 1, "name2": { "en-GB": "Onions" }, "prices": [ { "priceSequence": 1, "price": 0, "level": 1 } ], "options": [ "allowCondimentPrefix" ] } ] },
+      { "condimentId": 514, "familyGroupRef": 1, "name": { "en-GB": "Pickles" }, "definitions": [ { "number": 1, "name2": { "en-GB": "Pickles" }, "prices": [ { "priceSequence": 1, "price": 0, "level": 1 } ], "options": [ "allowCondimentPrefix" ] } ] },
+      { "condimentId": 521, "familyGroupRef": 2, "name": { "en-GB": "Ketchup" }, "definitions": [ { "number": 1, "name2": { "en-GB": "Ketchup" }, "prices": [ { "priceSequence": 1, "price": 0, "level": 1 } ] } ] },
+      { "condimentId": 522, "familyGroupRef": 2, "name": { "en-GB": "Mayo" }, "definitions": [ { "number": 1, "name2": { "en-GB": "Mayo" }, "prices": [ { "priceSequence": 1, "price": 0, "level": 1 } ] } ] },
+      { "condimentId": 523, "familyGroupRef": 2, "name": { "en-GB": "Garlic Mayo" }, "definitions": [ { "number": 1, "name2": { "en-GB": "Garlic Mayo" }, "prices": [ { "priceSequence": 1, "price": 0.5, "level": 1 } ] } ] }
+    ],
+    "condimentPrefixes": [
+      { "prefixId": 1, "name": { "en-GB": "No" }, "prefixType": "no" },
+      { "prefixId": 2, "name": { "en-GB": "Extra" }, "prefixType": "add" },
+      { "prefixId": 3, "name": { "en-GB": "Light" }, "prefixType": "description" },
+      { "prefixId": 4, "name": { "en-GB": "On the side" }, "prefixType": "description" }
+    ],
+    "comboMeals": [
+      {
+        "comboMealId": 1, "name": { "en-GB": "Burger Meal" }, "menuItemRef": 401,
+        "comboGroups": [
+          { "comboGroupId": 1, "name": { "en-GB": "Burger" }, "isMainGroup": true, "count": 1,
+            "prices": [ { "priceSequence": 1, "price": 9.5 } ],
+            "menuItems": [
+              { "menuItemRef": 101, "prices": [ { "priceSequence": 1, "price": 9.5 } ] },
+              { "menuItemRef": 102, "prices": [ { "priceSequence": 1, "price": 8.95 } ] }
+            ] },
+          { "comboGroupId": 2, "name": { "en-GB": "Side" }, "count": 1,
+            "prices": [ { "priceSequence": 1, "price": 2.0 } ],
+            "menuItems": [
+              { "menuItemRef": 201, "prices": [ { "priceSequence": 1, "price": 2.0 } ] },
+              { "menuItemRef": 202, "prices": [ { "priceSequence": 1, "price": 2.5 } ] }
+            ] },
+          { "comboGroupId": 3, "name": { "en-GB": "Drink" }, "count": 1,
+            "prices": [ { "priceSequence": 1, "price": 1.5 } ],
+            "menuItems": [
+              { "menuItemRef": 301, "prices": [ { "priceSequence": 1, "price": 1.5 } ] },
+              { "menuItemRef": 302, "prices": [ { "priceSequence": 1, "price": 4.0 } ] }
+            ] }
+        ]
+      }
+    ]
+  },
+  "tenders": [
+    { "tenderId": 1, "name": "Cash", "allowOverTender": true },
+    { "tenderId": 2, "name": "Card" },
+    { "tenderId": 3, "name": "Gift Card" }
+  ],
+  "discounts": [
+    { "discountId": 1, "name": "Staff 20%", "mockType": "presetRate", "rate": 0.2 },
+    { "discountId": 2, "name": "Manager Open Amount", "mockType": "openAmount" }
+  ],
+  "serviceCharges": [
+    { "serviceChargeId": 1, "name": "Service 12.5%", "mockType": "presetRate", "rate": 0.125 }
+  ],
+  "tax": { "taxRateId": "1", "name": "Sales Tax 10%", "rate": 0.1 }
+}
